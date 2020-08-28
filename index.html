@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lesson 6</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap&subset=cyrillic"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+      integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="white-box">
+        <div class="container">
+          <div class="nav d-flex center-items between">
+            <div class="nav__logo d-flex center-items">
+              <img src="image/logo.png" alt="Logo" class="logo" />
+              <div class="nav__text">
+                Project
+                <span>live</span>
+              </div>
+              <div class="nav__menu d-flex center-items" id="app">
+                <v-dialog class="login" btn-text="Вход">
+                  <div class="group">
+                    <v-text-field label="Email"></v-text-field>
+                    <v-text-field
+                      label="Пароль"
+                      :rules="rules"
+                      hide-details="auto"
+                    ></v-text-field>
+                  </div>
+                </v-dialog>
+                <v-dialog class="reg" btn-text="Регистрация">
+                  <v-app style="max-height: 90%" id="inspire">
+                    <div>
+                      <v-select :items="items" label="Role"></v-select>
+                      <v-text-field label="Имя"></v-text-field>
+                      <v-text-field
+                        label="Фамилия"
+                        :rules="rules"
+                        hide-details="auto"
+                      ></v-text-field>
+                    </div>
+                  </v-app>
+                </v-dialog>
+              </div>
+            </div>
+            <div class="nav__phone d-flex center-items">
+              <i class="fas fa-language"></i>
+              <p>Языки</p>
+            </div>
+          </div>
+        </div>
+        <!-- end 16:31 -->
+      </div>
+      <div class="container">
+        <div class="reg d-flex between" id="app">
+          <div class="offer d-flex">
+            <div class="offer__workshop">
+              <i class="fas fa-graduation-cap"></i>
+              Создавай уже сейчас
+              <h1 class="offer__title">
+                Регистрируйся и принимай участие в новых проектах уже сегодня.
+              </h1>
+            </div>
+          </div>
+          <form action="#" class="form center center-itemsы">
+            <h4 class="form__title">Принять участие</h4>
+            <p>Что бы стать один из нас тебе достаточно зарегистрироваться.</p>
+            <div class="form__wrap">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/BSGlfE3I7Tc"
+                frameborder="0"
+                modestbranding="1"
+                allowfullscreen
+              ></iframe>
+              <a href="page/registration.html" class="form__submit"
+                >Начать регистрацию</a
+              >
+            </div>
+            <p class="form__safety">Ваши данные под защитой.</p>
+          </form>
+        </div>
+      </div>
+    </header>
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="nav d-flex center-items between">
+          <div class="nav__logo d-flex center-items">
+            <p>
+              © 2020 «Web-programming».
+              <a class="link" href="https://github.com/baysnoize/TokenD">
+                <i class="fab fa-git"></i> Created by Kholodniy Alexey.
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <template id="dialog-template">
+      <div>
+        <div class="Dialog" v-show="active">
+          <div class="Dialog__overlay"></div>
+          <div class="Dialog__content">
+            <div class="Dialog__body">
+              <slot></slot>
+            </div>
+            <div class="Dialog__footer">
+              <button class="btn" @click="onCancel()">Отмена</button>
+              <button class="btn btn-ok" @click="onConfirm()">
+                {{ btnText }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- <a class="link" href="#" @click="open()">{{ btnText }}</a> -->
+        <ul class="nav__menu d-flex center-items">
+          <li class="link nav__item" href="#" @click="open()">{{ btnText }}</li>
+        </ul>
+      </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+      Vue.component("v-dialog", {
+        template: "#dialog-template",
+        data: function () {
+          return {
+            active: false,
+            act: true,
+          };
+        },
+        props: ["btnText"],
+        methods: {
+          open: function () {
+            this.active = true;
+          },
+          close: function () {
+            this.active = false;
+          },
+          onCancel: function () {
+            this.close();
+          },
+          onConfirm: function () {
+            this.close();
+          },
+        },
+      });
+
+      new Vue({
+        el: "#app",
+        vuetify: new Vuetify(),
+        data: () => ({
+          items: ["Corporate", "General"],
+          rules: [
+            (value) => !!value || "Required.",
+            (value) => (value && value.length >= 6) || "Min 6 characters",
+          ],
+        }),
+      });
+    </script>
+  </body>
+</html>
