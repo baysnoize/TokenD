@@ -1,0 +1,151 @@
+.header {
+  background: url(../image/background.png);
+  height: 890px;
+}
+.white-box {
+  background: #fff;
+}
+.nav {
+  padding: 20px 0;
+}
+.nav__text {
+  font-family: "Roboto", sans-serif;
+  font-size: 14.5px;
+  font-weight: 900;
+  color: #1b3bde;
+  width: 100px;
+  margin-left: 10px;
+  margin-right: 80px;
+  text-transform: uppercase;
+}
+.nav__text span {
+  font-size: 20.5px;
+}
+.nav__menu {
+  max-height: 50px;
+}
+.nav__item {
+  font-size: 13px;
+  padding: 8px 22px;
+}
+.nav__item:hover {
+  background: #000;
+  color: #fff;
+  border-radius: 7px;
+}
+.nav__phone p {
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.offer {
+  font-weight: 900;
+  text-align: center;
+  align-items: center;
+}
+
+.offer__workshop {
+  font-weight: 300;
+  font-size: 16px;
+  width: 590px;
+}
+
+.offer__title {
+  font-size: 45px;
+  display: block;
+  margin-top: 35px;
+  margin-bottom: 30px;
+  color: #1b3bde;
+}
+.offer__workshop i {
+  font-size: 16px;
+  padding: 0 5px 0 15px;
+}
+.offer__time {
+  font-size: 13px;
+  margin: auto;
+  color: #fff;
+}
+.stroke {
+  border-radius: 7px;
+  padding: 8px 22px;
+  background: #000;
+  width: 150px;
+}
+.form {
+  background: #fff;
+  width: 535px;
+  height: 520px;
+  padding: 0 33px;
+  text-align: center;
+}
+.reg {
+  padding: 90px 0px;
+  width: 100%;
+}
+.form__wrap {
+  height: 260px;
+  margin-bottom: 90px;
+}
+.form__title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.form p {
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.form__input {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  display: block;
+  border: none;
+  width: 270px;
+  padding: 15px 0px;
+  font-size: 13px;
+  color: #acacac;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #acacac;
+}
+.form__input:focus {
+  color: #000;
+  border-bottom: 1px solid black;
+}
+
+.form__submit {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  background: #4acc4d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+  width: 270px;
+  height: 60px;
+  border-radius: 9px;
+  margin-top: 10px;
+  margin-left: 20%;
+  display: block;
+}
+.form__safety {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #adadad;
+}
+.form__reg {
+  width: 100%;
+}
+.nav__logo p {
+  color: #000;
+  font-size: 12px;
+  margin-left: 950px;
+}
+.footer {
+}
+.iframe {
+  width: 100% !important;
+}

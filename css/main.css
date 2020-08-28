@@ -1,0 +1,90 @@
+body {
+  font-family: "Roboto", sans-serif;
+  color: black;
+  padding: 0;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+p {
+  margin: 0;
+  line-height: 1.5em;
+}
+
+ul,
+li {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  font-weight: 900;
+  line-height: 1.15em;
+}
+h1 {
+  font-size: 45px;
+}
+h2 {
+  font-size: 28px;
+}
+h3 {
+  font-size: 19px;
+  font-weight: 900;
+}
+h4 {
+  font-size: 17px;
+  line-height: 1em;
+}
+a,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+input,
+input:hover,
+input:focus,
+input:active,
+button,
+button:hover,
+button:focus,
+button:active {
+  outline: none;
+}
+div,
+p,
+form,
+input,
+a,
+span,
+button {
+  box-sizing: border-box;
+}
+.container {
+  width: 1140px;
+  margin: 0 auto;
+  padding: 0px;
+}
+.d-flex {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+.center-items {
+  align-items: center;
+}
+.between {
+  justify-content: space-between;
+}
+.j-c-c {
+  justify-content: center;
+}

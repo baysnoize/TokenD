@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title>Lesson 6</title>
+	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/header.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap&subset=cyrillic" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+</head>
+<body>
+	<header class="header" id="header">
+		<div class="white-box">
+			<div class="container">
+				<div class="nav d-flex center-items between">
+					<div class="nav__logo d-flex center-items">
+						<img src="../image/logo.png" alt="Logo" class="logo">
+							<div class="nav__text">
+								Project
+								<span>live</span>
+							</div>
+						<ul class="nav__menu d-flex center-items">
+						<li class="nav__item" onclick="document.location='../index.html'">Войти</li>
+						<!-- <li class="nav__item"></li>
+						<li class="nav__item"></li> -->
+						<li class="nav__item" onclick="document.location='registration.html'">Регистрация</li>					
+					</ul>
+					</div>
+					
+					<div class="nav__phone d-flex center-items">
+						<i class="fas fa-language"></i>
+						<p>Языки</p>
+
+					</div>
+				</div>
+			</div> <!-- end 16:31 -->
+		</div>
+		<div class="container">
+			<div class="reg d-flex between" id="app">
+				<div class="offer d-flex">
+					<div class="offer__workshop">
+						<i class="fas fa-graduation-cap"></i>
+						Создавай уже сейчас
+						<h1 class="offer__title">
+							Регистрируйся и принимай участие в новых проектах уже сегодня.
+						</h1>
+					</div>
+				</div>
+				<!-- FORM REG -->
+				<form action="#" class="form center center-items">
+					<div id="app">
+        
+						<v-dialog btn-text="Согласен">Вопрос 1</v-dialog>
+						<v-dialog btn-text="Хорошо">Вопрос 2</v-dialog>
+				
+					</div>
+				
+					<template id="dialog-template">
+						<div>
+							<div class="Dialog" v-show="active">
+								<div class="Dialog__overlay" @click="close()"></div>
+								<div class="Dialog__content">
+									<div class="Dialog__body">
+										<slot></slot>
+									</div>
+									<div class="Dialog__footer">
+										<button class="btn" @click="onCancel()">Отмена</button>
+										<button class="btn btn-ok" @click="onConfirm()">{{ btnText }}</button>
+									</div>
+								</div>
+							</div>
+				
+							<a class="link" href="#" @click="open()">ссылка</a>
+						</div>
+					</template>					
+				</form>
+			</div>
+			
+		</div>
+	</header>
+	<footer class="footer" id="footer">
+		<div class="container">
+				<div class="nav d-flex center-items between">
+					<div class="nav__logo d-flex center-items">
+						
+						
+						<p>
+							© 2020 «Web-programming». Created by Kholodniy Alexey.
+						</p>
+											
+					</ul>
+					</div>
+				</div>
+			</div>		
+	</footer>
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <script>
+        Vue.component('v-dialog', {
+            template: '#dialog-template',
+            data: function() {
+                return {
+                    active: false
+                }
+            },
+            props: ['btnText'],
+            methods: {
+                open: function() {
+                    this.active = true
+                },
+                close: function() {
+                    this.active = false
+                },
+                onCancel: function() {
+                    this.close();
+                },
+                onConfirm: function() {
+                    this.close();
+                }
+            }
+        })
+
+        new Vue({
+            el: "#app"
+        })
+    </script>	
+</body>
+
+</html>
