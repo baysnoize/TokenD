@@ -36,34 +36,38 @@
                 <v-dialog class="login" btn-text="Вход">
                   <div class="group">
                     <v-text-field label="Email"></v-text-field>
+                    <!-- :rules="rules" -->
                     <v-text-field
                       label="Пароль"
-                      :rules="rules"
                       hide-details="auto"
                     ></v-text-field>
                   </div>
                 </v-dialog>
+
                 <v-dialog class="reg" btn-text="Регистрация">
                   <v-app style="max-height: 90%" id="inspire">
                     <div>
                       <v-select
+                        v-model="select"
                         :items="items"
+                        item-text="role"
                         label="Role"
-                        id="role"
+                        return-object
+                        @change="chekRole();"
                       ></v-select>
-                      <div v-show>
+                      <div v-show="visibleCorp">
                         <v-text-field label="Название компании"></v-text-field>
+                        <!-- :rules="rules" -->
                         <v-text-field
                           label="Количество работников"
-                          :rules="rules"
                           hide-details="auto"
                         ></v-text-field>
                       </div>
-                      <div v-show="true">
+                      <div v-show="visibleGen">
                         <v-text-field label="Имя"></v-text-field>
+                        <!-- :rules="rules" -->
                         <v-text-field
                           label="Фамилия"
-                          :rules="rules"
                           hide-details="auto"
                         ></v-text-field>
                       </div>
@@ -158,7 +162,6 @@
         data: function () {
           return {
             active: false,
-            act: true,
           };
         },
         props: ["btnText"],
@@ -181,13 +184,18 @@
       new Vue({
         el: "#app",
         vuetify: new Vuetify(),
-        data: () => ({
-          items: ["Corporate", "General"],
+        data() {
+          return {
+            select: { role: "General" },
+            items: [{ role: "General" }, { role: "Corporate" }],
+            visibleGen: true,
+            visibleCorp: false,
+          };
           rules: [
             (value) => !!value || "Required.",
             (value) => (value && value.length >= 6) || "Min 6 characters",
-          ],
-        }),
+          ];
+        },
       });
     </script>
   </body>

@@ -35,6 +35,7 @@ body {
 }
 
 .Dialog__body {
+  /* background: url(../image/background-blue.png); */
   padding: 20px;
   font-size: 15px;
   color: #4a4a4a;
@@ -84,7 +85,6 @@ body {
   color: #0179f1;
   border-radius: 3px;
   outline: 0;
-  vertical-align: middle;
   transition: box-shadow 0.1s ease-out, background-color 0.1s ease-out,
     border-color 0.1s ease-out, color 0.1s ease-out;
   border: none;
