@@ -20,6 +20,10 @@
       integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
   </head>
   <body>
     <header class="header" id="header">
@@ -53,23 +57,27 @@
                         item-text="role"
                         label="Role"
                         return-object
-                        @change="chekRole();"
+                        @change="show = !show "
                       ></v-select>
-                      <div v-show="visibleCorp">
-                        <v-text-field label="Название компании"></v-text-field>
-                        <!-- :rules="rules" -->
-                        <v-text-field
-                          label="Количество работников"
-                          hide-details="auto"
-                        ></v-text-field>
-                      </div>
-                      <div v-show="visibleGen">
+                      <div v-if="">
                         <v-text-field label="Имя"></v-text-field>
                         <!-- :rules="rules" -->
                         <v-text-field
                           label="Фамилия"
                           hide-details="auto"
                         ></v-text-field>
+                        <transition name="slide-fade">
+                          <div v-if="!show">
+                            <v-text-field
+                              label="Название компании"
+                            ></v-text-field>
+                            <!-- :rules="rules" -->
+                            <v-text-field
+                              label="Количество работников"
+                              hide-details="auto"
+                            ></v-text-field>
+                          </div>
+                        </transition>
                       </div>
                     </div>
                   </v-app>
@@ -85,12 +93,14 @@
         <!-- end 16:31 -->
       </div>
       <div class="container">
-        <div class="reg d-flex between" id="app">
+        <div class="reg d-flex between">
           <div class="offer d-flex">
             <div class="offer__workshop">
               <i class="fas fa-graduation-cap"></i>
               Создавай уже сейчас
-              <h1 class="offer__title">
+              <h1
+                class="offer__title animate__animated animate__backInUp animate__delay-1.2s"
+              >
                 Регистрируйся и принимай участие в новых проектах уже сегодня.
               </h1>
             </div>
@@ -107,9 +117,7 @@
                 modestbranding="1"
                 allowfullscreen
               ></iframe>
-              <a href="page/registration.html" class="form__submit"
-                >Начать регистрацию</a
-              >
+              <a href="#" class="form__submit">Начать регистрацию</a>
             </div>
             <p class="form__safety">Ваши данные под защитой.</p>
           </form>
@@ -134,9 +142,9 @@
     <template id="dialog-template">
       <div>
         <div class="Dialog" v-show="active">
-          <div class="Dialog__overlay"></div>
+          <div class="Dialog__overlay animate__bounceIn"></div>
           <div class="Dialog__content">
-            <div class="Dialog__body">
+            <div class="Dialog__body animate__flipInX">
               <slot></slot>
             </div>
             <div class="Dialog__footer">
@@ -188,8 +196,7 @@
           return {
             select: { role: "General" },
             items: [{ role: "General" }, { role: "Corporate" }],
-            visibleGen: true,
-            visibleCorp: false,
+            show: true,
           };
           rules: [
             (value) => !!value || "Required.",
