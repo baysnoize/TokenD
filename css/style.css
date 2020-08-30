@@ -184,15 +184,14 @@ input:valid ~ label {
 .bar:after {
   right: 50%;
 }
-
+.v-menu__content {
+  min-width: 155px !important;
+  top: 0 !important;
+  left: 220px !important;
+}
 /* active state */
 input:focus ~ .bar:before,
 input:focus ~ .bar:after {
   width: 50%;
 }
 /* vuetifyjs выпадающий список */
-.v-menu__content {
-  min-width: 155px !important;
-  top: 0 !important;
-  left: 220px !important;
-}
