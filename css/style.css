@@ -190,11 +190,9 @@ input:focus ~ .bar:before,
 input:focus ~ .bar:after {
   width: 50%;
 }
+/* vuetifyjs выпадающий список */
 .v-menu__content {
-  max-height: 304px;
-  min-width: 320px;
-  top: 301px;
-  left: 486px;
-  transform-origin: left top;
-  z-index: 15;
+  min-width: 150px !important;
+  top: 0 !important;
+  left: 220px !important;
 }

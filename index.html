@@ -46,13 +46,27 @@
                 <v-dialog class="reg" btn-text="Регистрация">
                   <v-app style="max-height: 90%" id="inspire">
                     <div>
-                      <v-select :items="items" label="Role"></v-select>
-                      <v-text-field label="Имя"></v-text-field>
-                      <v-text-field
-                        label="Фамилия"
-                        :rules="rules"
-                        hide-details="auto"
-                      ></v-text-field>
+                      <v-select
+                        :items="items"
+                        label="Role"
+                        id="role"
+                      ></v-select>
+                      <div v-show>
+                        <v-text-field label="Название компании"></v-text-field>
+                        <v-text-field
+                          label="Количество работников"
+                          :rules="rules"
+                          hide-details="auto"
+                        ></v-text-field>
+                      </div>
+                      <div v-show="true">
+                        <v-text-field label="Имя"></v-text-field>
+                        <v-text-field
+                          label="Фамилия"
+                          :rules="rules"
+                          hide-details="auto"
+                        ></v-text-field>
+                      </div>
                     </div>
                   </v-app>
                 </v-dialog>
