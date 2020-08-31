@@ -57,27 +57,23 @@
                         item-text="role"
                         label="Role"
                         return-object
-                        @change="show = !show "
+                        @change="RegInputVisible()"
                       ></v-select>
-                      <div v-if="">
+                      <div v-if="show">
                         <v-text-field label="Имя"></v-text-field>
                         <!-- :rules="rules" -->
                         <v-text-field
                           label="Фамилия"
                           hide-details="auto"
                         ></v-text-field>
-                        <transition name="slide-fade">
-                          <div v-if="!show">
-                            <v-text-field
-                              label="Название компании"
-                            ></v-text-field>
-                            <!-- :rules="rules" -->
-                            <v-text-field
-                              label="Количество работников"
-                              hide-details="auto"
-                            ></v-text-field>
-                          </div>
-                        </transition>
+                      </div>
+                      <div v-else>
+                        <v-text-field label="Название компании"></v-text-field>
+                        <!-- :rules="rules" -->
+                        <v-text-field
+                          label="Количество работников"
+                          hide-details="auto"
+                        ></v-text-field>
                       </div>
                     </div>
                   </v-app>
@@ -98,9 +94,7 @@
             <div class="offer__workshop">
               <i class="fas fa-graduation-cap"></i>
               Создавай уже сейчас
-              <h1
-                class="offer__title animate__animated animate__backInUp animate__delay-1.2s"
-              >
+              <h1 class="offer__title animate__animated animate__backInUp">
                 Регистрируйся и принимай участие в новых проектах уже сегодня.
               </h1>
             </div>
@@ -110,6 +104,7 @@
             <p>Что бы стать один из нас тебе достаточно зарегистрироваться.</p>
             <div class="form__wrap">
               <iframe
+                class="animate__animated animate__zoomIn"
                 width="100%"
                 height="100%"
                 src="https://www.youtube.com/embed/BSGlfE3I7Tc"
@@ -128,10 +123,11 @@
       <div class="container">
         <div class="nav d-flex center-items between">
           <div class="nav__logo d-flex center-items">
-            <p>
+            <p class="">
               © 2020 «Web-programming».
               <a class="link" href="https://github.com/baysnoize/TokenD">
-                <i class="fab fa-git"></i> Created by Kholodniy Alexey.
+                <i class="fab fa-git"></i>
+                Created by Kholodniy Alexey.
               </a>
             </p>
           </div>
@@ -194,14 +190,23 @@
         vuetify: new Vuetify(),
         data() {
           return {
-            select: { role: "General" },
-            items: [{ role: "General" }, { role: "Corporate" }],
             show: true,
+            select: "General",
+            items: ["General", "Corporate"],
           };
           rules: [
             (value) => !!value || "Required.",
             (value) => (value && value.length >= 6) || "Min 6 characters",
           ];
+        },
+        methods: {
+          RegInputVisible: function () {
+            if (this.select == "General") {
+              this.show = !this.show;
+            } else {
+              this.show = !this.show;
+            }
+          },
         },
       });
     </script>
