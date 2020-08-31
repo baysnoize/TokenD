@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Lesson 6</title>
+    <!-- Vuetify lib -->
     <link
       href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css"
       rel="stylesheet"
@@ -10,19 +11,27 @@
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Font -->
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap&subset=cyrillic"
       rel="stylesheet"
     />
+    <!-- FontAwesome -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
       integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
       crossorigin="anonymous"
     />
+    <!-- Animate -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
+    <!-- Icon Vuetify  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
     />
   </head>
   <body>
@@ -39,11 +48,20 @@
               <div class="nav__menu d-flex center-items" id="app">
                 <v-dialog class="login" btn-text="Вход">
                   <div class="group">
-                    <v-text-field label="Email"></v-text-field>
+                    <v-text-field label="Email" clearable></v-text-field>
                     <!-- :rules="rules" -->
+                    <span>{{input-10}}s</span>
                     <v-text-field
+                      v-model="password"
+                      :append-icon="showpass ? 'mdi-eye' : 'mdi-eye-off'"
+                      :rules="[rules.required, rules.min]"
+                      :type="showpass ? 'text' : 'password'"
+                      name="input-10-1"
                       label="Пароль"
-                      hide-details="auto"
+                      hint=""
+                      counter
+                      clearable
+                      @click:append="showpass = !showpass"
                     ></v-text-field>
                   </div>
                 </v-dialog>
@@ -60,19 +78,24 @@
                         @change="RegInputVisible()"
                       ></v-select>
                       <div v-if="show">
-                        <v-text-field label="Имя"></v-text-field>
+                        <v-text-field label="Имя" clearable></v-text-field>
                         <!-- :rules="rules" -->
                         <v-text-field
                           label="Фамилия"
                           hide-details="auto"
+                          clearable
                         ></v-text-field>
                       </div>
                       <div v-else>
-                        <v-text-field label="Название компании"></v-text-field>
+                        <v-text-field
+                          label="Название компании"
+                          clearable
+                        ></v-text-field>
                         <!-- :rules="rules" -->
                         <v-text-field
                           label="Количество работников"
                           hide-details="auto"
+                          clearable
                         ></v-text-field>
                       </div>
                     </div>
@@ -170,17 +193,18 @@
         },
         props: ["btnText"],
         methods: {
-          open: function () {
+          open() {
             this.active = true;
           },
-          close: function () {
+          close() {
             this.active = false;
           },
-          onCancel: function () {
+          onCancel() {
             this.close();
           },
-          onConfirm: function () {
-            this.close();
+          onConfirm() {
+            console.log(this.password);
+            console.log("world");
           },
         },
       });
@@ -191,16 +215,20 @@
         data() {
           return {
             show: true,
+            showpass: false,
+            password: "",
             select: "General",
             items: ["General", "Corporate"],
+            rules: {
+              required: (value) => !!value || "",
+              min: (v) => v.length >= 8 || "Минимум 8 символов",
+              // emailMatch: () =>
+              //   "The email and password you entered don't match",
+            },
           };
-          rules: [
-            (value) => !!value || "Required.",
-            (value) => (value && value.length >= 6) || "Min 6 characters",
-          ];
         },
         methods: {
-          RegInputVisible: function () {
+          RegInputVisible() {
             if (this.select == "General") {
               this.show = !this.show;
             } else {
