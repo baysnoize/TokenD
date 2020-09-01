@@ -48,9 +48,14 @@
               <div class="nav__menu d-flex center-items" id="app">
                 <v-dialog class="login" btn-text="Вход">
                   <div class="group">
-                    <v-text-field label="Email" clearable></v-text-field>
+                    <v-text-field
+                      label="Email"
+                      clearable
+                      v-model="email"
+                      @change=""
+                    ></v-text-field>
                     <!-- :rules="rules" -->
-                    <span>{{input-10}}s</span>
+                    <span>{{email}}</span>
                     <v-text-field
                       v-model="password"
                       :append-icon="showpass ? 'mdi-eye' : 'mdi-eye-off'"
@@ -63,6 +68,7 @@
                       clearable
                       @click:append="showpass = !showpass"
                     ></v-text-field>
+                    <span>{{password}}</span>
                   </div>
                 </v-dialog>
 
@@ -103,13 +109,12 @@
                 </v-dialog>
               </div>
             </div>
-            <div class="nav__phone d-flex center-items">
+            <div class="nav__language d-flex center-items">
               <i class="fas fa-language"></i>
               <p>Языки</p>
             </div>
           </div>
         </div>
-        <!-- end 16:31 -->
       </div>
       <div class="container">
         <div class="reg d-flex between">
@@ -168,7 +173,7 @@
             </div>
             <div class="Dialog__footer">
               <button class="btn" @click="onCancel()">Отмена</button>
-              <button class="btn btn-ok" @click="onConfirm()">
+              <button class="btn btn-ok" @click="onConfirm">
                 {{ btnText }}
               </button>
             </div>
@@ -203,8 +208,7 @@
             this.close();
           },
           onConfirm() {
-            console.log(this.password);
-            console.log("world");
+            this.close();
           },
         },
       });
@@ -216,6 +220,7 @@
           return {
             show: true,
             showpass: false,
+            email: "",
             password: "",
             select: "General",
             items: ["General", "Corporate"],
@@ -234,6 +239,11 @@
             } else {
               this.show = !this.show;
             }
+          },
+          LogIn() {
+            // push Login
+            console.log(this.email);
+            console.log(this.password);
           },
         },
       });
