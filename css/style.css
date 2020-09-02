@@ -4,11 +4,11 @@ body {
   font-family: "Helvetica Neue", sans-serif;
 }
 
-#app {
+/* #app {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 /* Dialog */
 .Dialog__overlay {

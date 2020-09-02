@@ -49,9 +49,10 @@
                 <v-dialog class="login" btn-text="Вход">
                   <div class="group">
                     <v-text-field
+                      v-model="email"
                       label="Email"
                       clearable
-                      v-model="email"
+                      ref="email"
                       @change=""
                     ></v-text-field>
                     <!-- :rules="rules" -->
@@ -64,6 +65,7 @@
                       name="input-10-1"
                       label="Пароль"
                       hint=""
+                      ref="password"
                       counter
                       clearable
                       @click:append="showpass = !showpass"
@@ -173,7 +175,7 @@
             </div>
             <div class="Dialog__footer">
               <button class="btn" @click="onCancel()">Отмена</button>
-              <button class="btn btn-ok" @click="onConfirm">
+              <button class="btn btn-ok" @click="onConfirm(); SingIn()">
                 {{ btnText }}
               </button>
             </div>
@@ -210,6 +212,12 @@
           onConfirm() {
             this.close();
           },
+          SingIn() {
+            // push Login
+
+            console.log(this.$refs.email);
+            console.log(this.$refs.password);
+          },
         },
       });
 
@@ -239,11 +247,6 @@
             } else {
               this.show = !this.show;
             }
-          },
-          LogIn() {
-            // push Login
-            console.log(this.email);
-            console.log(this.password);
           },
         },
       });
